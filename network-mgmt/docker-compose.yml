@@ -12,6 +12,8 @@ services:
       - caddy_data:/data
       - caddy_config:/config
 
+  # adguard_home:
+    # image:
 volumes:
   caddy_data:
   caddy_config:

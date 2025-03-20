@@ -1,3 +1,5 @@
 :80
+:443
 
-respond "Hello, world!"
+# need to specify domains instead of ports
+reverse_proxy :9000
