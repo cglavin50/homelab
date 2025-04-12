@@ -8,9 +8,9 @@ services:
       - "443:443/udp"
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
-      - ./site:/srv
       - caddy_data:/data
       - caddy_config:/config
+      - ../logs/caddy:/var/log/caddy
 
   adguard_home:
     image: adguard/adguardhome:latest
