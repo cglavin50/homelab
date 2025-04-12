@@ -26,6 +26,6 @@ adguard.home {
 
 vault.home {
 	tls internal
-	import logging vault.home.
+	import logging vault.home
 	reverse_proxy 192.168.1.10:8080
 }

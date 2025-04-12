@@ -11,6 +11,8 @@ services:
       - caddy_data:/data
       - caddy_config:/config
       - ../logs/caddy:/var/log/caddy
+    networks:
+      - caddy_net
 
   adguard_home:
     image: adguard/adguardhome:latest
@@ -31,3 +33,7 @@ volumes:
     driver: local
   adguard_work:
     driver: local
+
+networks:
+  caddy_net:
+    driver: bridge
