@@ -21,6 +21,7 @@ services:
     volumes:
       - adguard_config:/opt/adguardhome/conf # app config
       - adguard_work:/opt/adguardhome/work # app working dir
+    network_mode: "host"
 
 
 volumes:
