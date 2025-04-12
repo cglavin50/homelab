@@ -1,5 +1,6 @@
 services:
   caddy:
+    name: caddy
     image: caddy:latest
     restart: unless-stopped
     ports:
@@ -15,6 +16,7 @@ services:
       - caddy_net
 
   adguard_home:
+    name: adguard_home
     image: adguard/adguardhome:latest
     ports:
       - 53:53/tcp
