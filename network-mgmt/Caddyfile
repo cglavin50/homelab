@@ -1,9 +1,29 @@
-:443
+{
+	# General options
+	http_port 80
+	https_port 443
+
+	# logging
+	log {
+		output file /var/log/caddy/access.log
+		format json
+	}
+}
+
+# stolen from reddit
+(logging) {
+	log {
+		output file /var/log/caddy/{args[0]}.access.log
+		format json
+	}
+}
 
 adguard.home {
+	import logging adguard.home
 	reverse_proxy 192.168.1.10:3000
 }
 
 vault.home {
+	import logging vault.home
 	reverse_proxy 192.168.1.10:8080
 }
