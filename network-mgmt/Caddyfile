@@ -33,5 +33,5 @@ vault.home {
 dash.home {
 	tls internal
 	import logging homepage
-	reverse_proxy 192.168.1.10
+	reverse_proxy 192.168.1.10:3030
 }
