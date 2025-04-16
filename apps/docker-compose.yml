@@ -5,13 +5,27 @@ services:
     restart: always
     environment:
       DOMAIN: "https://vault.home"
-      SIGNUPS_ALLOWED: "true"
+      SIGNUPS_ALLOWED: "false"
     volumes:
       - ./vw-data:/data
     ports:
       - 8080:80
     networks:
       - app_net
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    ports:
+      - 3030:3000
+    volumes:
+      - ./homepage-config:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      HOMEPAGE_ALLOWED_HOSTS: localhost:3000, dash.home
+    networks:
+      - app_net
+
+volumes:
+  vw-data:
 
 networks:
   app_net:
