@@ -8,14 +8,14 @@ services:
       SIGNUPS_ALLOWED: "false"
     volumes:
       - ./vw-data:/data
-    ports:
-      - 8080:80
+    # ports:
+    #   - 8080:80
     networks:
       - app_net
   homepage:
     image: ghcr.io/gethomepage/homepage:latest
-    ports:
-      - 3030:3000
+    # ports:
+    #   - 3030:3000
     volumes:
       - ./homepage-config:/app/config
       - /var/run/docker.sock:/var/run/docker.sock
