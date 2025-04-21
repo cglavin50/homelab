@@ -21,7 +21,7 @@ services:
       - ./homepage-config:/app/config
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      HOMEPAGE_ALLOWED_HOSTS: localhost:3000, dash.home
+      HOMEPAGE_ALLOWED_HOSTS: localhost:3000,dash.home
     networks:
       - app_net
 
