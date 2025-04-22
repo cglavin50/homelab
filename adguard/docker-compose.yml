@@ -1,0 +1,18 @@
+services:
+  adguard_home:
+    container_name: adguard_home
+    image: adguard/adguardhome:latest
+    restart: unless-stopped
+    networks:
+      adguard-vlan:
+        ipv4_address: 192.168.1.5
+    volumes:
+      - adguard_config:/opt/adguardhome/conf # app config
+      - adguard_work:/opt/adguardhome/work # app working dir
+    cap_add:
+      - NET_ADMIN
+    ports: []
+
+networks:
+  adguard-vlan:
+    external: true
