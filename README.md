@@ -1,6 +1,8 @@
 # Homelab
 
-## Features
+## Core Services
 
-TODO
-- Caddy for reverse proxy to services and certs 
+- Caddy for reverse proxy
+- Adguard Home for DNS rewrites + DNS sinkhole
+- Vaultwarden for password manager
+
