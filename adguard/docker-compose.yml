@@ -4,15 +4,22 @@ services:
     image: adguard/adguardhome:latest
     restart: unless-stopped
     networks:
-      adguard-vlan:
-        ipv4_address: 192.168.1.5
+      - adguard_net
     volumes:
-      - adguard_config:/opt/adguardhome/conf # app config
-      - adguard_work:/opt/adguardhome/work # app working dir
-    cap_add:
-      - NET_ADMIN
-    ports: []
+      - config:/opt/adguardhome/conf # app config
+      - work:/opt/adguardhome/work # app working dir
+    ports:
+      - 53:53/udp
+      - 53:53/tcp
 
 networks:
-  adguard-vlan:
-    external: true
+  adguard_net:
+    driver: bridge
+    name: adguard_net
+
+volumes:
+  config:
+    driver: local
+  work:
+    driver: local
+

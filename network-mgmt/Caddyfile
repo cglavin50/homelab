@@ -21,15 +21,13 @@
 adguard.home {
 	tls internal
 	import logging adguard.home
-	# reverse_proxy 192.168.1.10:3000
-	# reverse_proxy adguard
+	reverse_proxy adguard:3000
 
 }
 
 vault.home {
 	tls internal
 	import logging vault.home
-	# reverse_proxy 192.168.1.10:8080
 	reverse_proxy vaultwarden:80
 }
 
@@ -37,5 +35,4 @@ dash.home {
 	tls internal
 	import logging homepage
 	reverse_proxy homepage:3000
-	# reverse_proxy 192.168.1.10:3030
 }
