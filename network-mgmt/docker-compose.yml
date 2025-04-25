@@ -14,6 +14,7 @@ services:
       - ../logs/caddy:/var/log/caddy
     networks:
       - caddy_net
+      - adguard_net
       - app_net
 
 
@@ -27,4 +28,6 @@ networks:
   caddy_net:
     driver: bridge
   app_net:
+    external: true
+  adguard_net:
     external: true
