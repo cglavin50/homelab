@@ -18,9 +18,9 @@ services:
 
 
 volumes:
-  adguard_config:
+  caddy_data:
     driver: local
-  adguard_work:
+  caddy_config:
     driver: local
 
 networks:
