@@ -5,7 +5,7 @@
 
 	# logging
 	log {
-		output file /var/log/caddy/access.log
+		output file /var/log/caddy/reverse_proxy.log
 		format json
 	}
 }
@@ -13,21 +13,20 @@
 # stolen from reddit
 (logging) {
 	log {
-		output file /var/log/caddy/{args[0]}.access.log
+		output file /var/log/caddy/{args[0]}.log
 		format json
 	}
 }
 
 adguard.home {
 	tls internal
-	import logging adguard.home
+	import logging adguard
 	reverse_proxy adguard:3000
-
 }
 
 vault.home {
 	tls internal
-	import logging vault.home
+	import logging vault
 	reverse_proxy vaultwarden:80
 }
 
