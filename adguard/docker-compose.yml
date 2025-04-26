@@ -1,6 +1,6 @@
 services:
   adguard_home:
-    container_name: adguard_home
+    container_name: adguard
     image: adguard/adguardhome:latest
     restart: unless-stopped
     networks:
