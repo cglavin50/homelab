@@ -3,3 +3,9 @@ logs/
 /apps/vw-data/
 
 keys/
+
+.uv/
+venv/
+.venv/
+
+.env
