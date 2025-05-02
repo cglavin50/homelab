@@ -1,0 +1,7 @@
+[project]
+name = "homelab"
+version = "0.1.0"
+description = "Ubuntu 24 LTS homelab running on a Raspberry Pi Model 4B"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []

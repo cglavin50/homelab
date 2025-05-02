@@ -1,0 +1,10 @@
+# Configuring docker and docker compose
+- name: Setup Docker + Compose
+  hosts: rpi
+  become: true
+  roles:
+    - role: geerlingguy.docker
+      vars:
+        docker_install_compose_plugin: true
+        docker_compose_package: docker-compose-plugin
+        docker_compose_package_state: present
