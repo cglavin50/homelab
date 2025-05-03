@@ -1,0 +1,21 @@
+# Responsible for running all our docker compose services
+- hosts: rpi
+  become: true
+  vars:
+    docker_compose_dir: null # for shared handler
+
+  handlers:
+    - name: restart container
+      command: docker compose restart
+      args: 
+        chdir: "{{ docker_compose_dir }}"
+
+  roles:
+    - role: caddy
+      vars:
+        docker_compose_dir: /opt/caddy
+    - role: homepage
+      vars:
+        docker_compose_dir: /opt/homepage
+    - role: adguard
+    - role: vaultwarden

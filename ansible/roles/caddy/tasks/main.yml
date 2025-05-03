@@ -1,0 +1,22 @@
+- name: Configure dir
+  file:
+    path: /opt/caddy
+    state: directory
+    mode: '0755'
+
+- name: Copy docker-compose
+  copy:
+    src: docker-compose.yml
+    dest: /opt/caddy/docker-compose.yml
+
+- name: Copy Caddyfile
+  copy:
+    src: Caddyfile
+    dest: /opt/caddy/Caddyfile
+  notify: restart container
+  tags: caddy_config
+
+- name: Run Caddy
+  command: docker compose up -d
+  args:
+    chdir: /opt/caddy

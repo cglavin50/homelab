@@ -11,11 +11,12 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
       - caddy_config:/config
-      - ../logs/caddy:/var/log/caddy
+      - ./logs:/var/log/caddy
     networks:
       - caddy_net
       - adguard_net
-      - app_net
+      - homepage_net
+      - vw_net
 
 
 volumes:
@@ -28,7 +29,9 @@ networks:
   caddy_net:
     driver: bridge
     name: caddy_net
-  app_net:
+  homepage_net:
     external: true
   adguard_net:
+    external: true
+  vw_net:
     external: true

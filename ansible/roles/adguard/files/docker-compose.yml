@@ -6,8 +6,8 @@ services:
     networks:
       - adguard_net
     volumes:
-      - config:/opt/adguardhome/conf 
-      - work:/opt/adguardhome/work 
+      - config:/opt/adguardhome/conf
+      - work:/opt/adguardhome/work
     ports:
       - 53:53/udp
       - 53:53/tcp

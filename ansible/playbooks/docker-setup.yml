@@ -3,7 +3,7 @@
   hosts: rpi
   become: true
   roles:
-    - role: geerlingguy.docker
+    - role: external/geerlingguy.docker
       vars:
         docker_install_compose_plugin: true
         docker_compose_package: docker-compose-plugin

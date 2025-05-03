@@ -1,0 +1,18 @@
+#SPDX-License-Identifier: MIT-0
+---
+- name: Configure dir
+  file:
+    path: /opt/vaultwarden
+    state: directory
+    mode: '0755'
+
+- name: Copy docker-compose
+  copy:
+    src: docker-compose.yml
+    dest: /opt/vaultwarden/docker-compose.yml
+
+- name: Run Vaultwarden
+  command: docker compose up -d
+  args:
+    chdir: /opt/vaultwarden
+

@@ -9,3 +9,5 @@ venv/
 .venv/
 
 .env
+
+./ansible/roles/external/

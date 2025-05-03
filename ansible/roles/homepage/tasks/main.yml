@@ -1,0 +1,23 @@
+- name: Configure dir
+  file:
+    path: /opt/homepage
+    state: directory
+    mode: '0755'
+
+- name: Copy compose file
+  copy:
+    src: docker-compose.yml
+    dest: /opt/homepage/docker-compose.yml
+
+- name: Copy config files
+  copy:
+    src: config/
+    dest: /opt/homepage/config/
+    mode: '0644'
+  notify: restart container
+  tags: homepage_config
+
+- name: Run Homepage
+  command: docker compose up -d
+  args:
+    chdir: /opt/homepage
