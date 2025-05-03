@@ -7,4 +7,5 @@ requires-python = ">=3.13"
 dependencies = [
     "ansible>=11.5.0",
     "ansible-core>=2.18.5",
+    "ansible-lint>=25.4.0",
 ]
