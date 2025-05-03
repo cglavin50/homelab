@@ -1,4 +1,4 @@
-name: Lint & Deploy Homelab 🚀
+name: Lint
 
 on:
   push:
@@ -9,19 +9,12 @@ on:
 
 jobs:
   build:
-    name: Deploy 🚀
+    name: Lint 🧹
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repo
         uses: actions/checkout/@v4
-
-      - name: Setup SSH key
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/ansible
-          chmod 600 ~/.ssh/ansible
-          ssh-keyscan -H 192.168.1.10 >> ~/.ssh/known_hosts 
 
       - name: Install uv 
         uses: astral-sh/setup-uv@v6
@@ -38,9 +31,3 @@ jobs:
 
       - name: Lint Ansible playbooks
         run: ansible-lint --fix
-
-      - name: Install Make
-        run: sudo apt-get install -y make
-
-      - name: Run Makefile Deploy
-        run: make deploy
