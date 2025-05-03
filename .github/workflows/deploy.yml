@@ -20,7 +20,7 @@ jobs:
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/ansible
-          chmod 600 ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/ansible
           ssh-keyscan -H 192.168.1.10 >> ~/.ssh/known_hosts 
 
       - name: Install uv 
