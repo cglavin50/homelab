@@ -1,4 +1,3 @@
-# Configuring docker and docker compose
 - name: Setup Docker + Compose
   hosts: rpi
   become: true
