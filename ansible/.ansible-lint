@@ -1,8 +1,10 @@
+---
 skip_list:
   - package-
   - experimental
   - git-latest
   - no-changed-when
+  - fqcn-builtins
 
 exclude_paths:
   - roles/geerlingguy.docker/

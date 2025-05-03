@@ -1,11 +1,12 @@
+---
 services:
   homepage:
     image: ghcr.io/gethomepage/homepage:latest
     container_name: homepage
     restart: unless-stopped
     volumes:
-    - ./config:/app/config
-    - /var/run/docker.sock:/var/run/docker.sock
+      - ./config:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock
     environment:
       HOMEPAGE_ALLOWED_HOSTS: localhost:3000,dash.home
     networks:

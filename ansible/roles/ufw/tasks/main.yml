@@ -1,12 +1,13 @@
+---
 - name: Ensure UFW is installed
-  apt:
+  ansible.builtin.apt:
     name: ufw
     state: present
   become: true
 
 - name: Configure UFW logging
   community.general.ufw:
-    logging: 'on'
+    logging: "on"
 
 - name: Set default deny UFW policy
   community.general.ufw:

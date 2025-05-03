@@ -1,3 +1,4 @@
+---
 services:
   adguard_home:
     container_name: adguard
@@ -22,4 +23,3 @@ volumes:
     driver: local
   work:
     driver: local
-

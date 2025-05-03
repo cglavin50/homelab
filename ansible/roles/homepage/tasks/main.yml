@@ -1,23 +1,24 @@
+---
 - name: Configure dir
-  file:
+  ansible.builtin.file:
     path: /opt/homepage
     state: directory
-    mode: '0755'
+    mode: "0755"
 
 - name: Copy compose file
-  copy:
+  ansible.builtin.copy:
     src: docker-compose.yml
     dest: /opt/homepage/docker-compose.yml
 
 - name: Copy config files
-  copy:
+  ansible.builtin.copy:
     src: config/
     dest: /opt/homepage/config/
-    mode: '0644'
+    mode: "0644"
   notify: restart container
   tags: homepage_config
 
 - name: Run Homepage
-  command: docker compose up -d
+  ansible.builtin.command: docker compose up -d
   args:
     chdir: /opt/homepage

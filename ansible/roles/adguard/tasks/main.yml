@@ -1,15 +1,16 @@
+---
 - name: Configure dir
-  file:
+  ansible.builtin.file:
     path: /opt/adguard
     state: directory
-    mode: '0755'
+    mode: "0755"
 
 - name: Copy docker-compose
-  copy:
+  ansible.builtin.copy:
     src: docker-compose.yml
     dest: /opt/adguard/docker-compose.yml
 
 - name: Run adguard
-  command: docker compose up -d
+  ansible.builtin.command: docker compose up -d
   args:
     chdir: /opt/adguard

@@ -1,3 +1,4 @@
+---
 - name: Configure UFW
   hosts: rpi
   become: true
