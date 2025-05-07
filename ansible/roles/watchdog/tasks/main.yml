@@ -1,0 +1,22 @@
+- name: Install watchdog
+  ansible.builtin.apt:
+    name: watchdog
+    state: present
+    update_cache: yes
+  become: true
+
+- name: Copy watchdog conf
+  ansible.builtin.copy:
+    src: watchdog.conf
+    dest: /etc/watchdog.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify: restart watchdog
+
+- name: Ensure watchdog is configured to start on boot
+  lineinfile:
+    path: /etc/default/watchdog
+    regexp: '^#?WDKEEPALIVE'
+    line: 'WDKEEPALIVE=1'
+

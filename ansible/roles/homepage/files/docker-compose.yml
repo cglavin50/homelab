@@ -6,6 +6,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./config:/app/config
+      - ./config/images:/app/public/images
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       HOMEPAGE_ALLOWED_HOSTS: localhost:3000,dash.home

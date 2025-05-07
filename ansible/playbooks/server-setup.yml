@@ -1,5 +1,4 @@
----
-- name: Setup Docker + Compose
+- name: Setup Docker (Compose)
   hosts: rpi
   become: true
   roles:
@@ -8,3 +7,9 @@
         docker_install_compose_plugin: true
         docker_compose_package: docker-compose-plugin
         docker_compose_package_state: present
+
+- name: Configure watchdog
+  hosts: rpi
+  become: true
+  roles:
+    - watchdog

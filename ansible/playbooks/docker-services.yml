@@ -1,10 +1,8 @@
----
 # Responsible for running all our docker compose services
 - hosts: rpi
   become: true
   vars:
     docker_compose_dir: # for shared handler
-
   handlers:
     - name: restart container
       command: docker compose restart

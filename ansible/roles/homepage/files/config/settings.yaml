@@ -1,3 +1,7 @@
 ---
 title: Home
 description: RaspberryPi Homelab Homepage
+background:
+  image: /images/firewatch.jpg
+  blur: sm
+  opacity: 50

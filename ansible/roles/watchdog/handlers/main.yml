@@ -1,0 +1,4 @@
+- name: restart watchdog
+  ansible.builtin.service:
+    name: watchdog
+    state: restarted

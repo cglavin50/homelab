@@ -1,0 +1,56 @@
+services:
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus:/etc/prometheus
+    networks:
+      - monitoring_net
+    restart: always
+  node-exporter:
+    container_name: node-exporter
+    image: prom/node-exporter
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command: # from Grafana docks
+      - '--path.procfs=/host/proc'
+      - '--path.rootfs=/rootfs'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+    networks:
+      - monitoring_net
+    restart: always
+  cadvisor:
+    container_name: cadvisor
+    image: gcr.io/cadvisor/cadvisor:latest
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    networks:
+      - monitoring_net
+    command:
+      - "--housekeeping_interval=60s"
+      - "--docker_only=true"
+      - "--enable_metrics=cpu,memory,network"
+  granafa:
+    container_name: grafana
+    image: grafana/grafana:latest
+    volumes:
+      - grafana-data:/var/lib/grafana
+    environment:
+      - GF_SERVER_ROOT_URL=https://grafana.home
+      - GF_SERVER_DOMAIN=grafana.home
+      - GF_USER_ALLOW_SIGN_UP=true
+    restart: always
+    networks:
+      - monitoring_net
+
+networks:
+  monitoring_net:
+    name: monitoring_net
+volumes:
+  grafana-data:

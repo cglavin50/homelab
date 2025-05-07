@@ -1,14 +1,15 @@
----
 - name: Configure dir
   ansible.builtin.file:
     path: /opt/caddy
     state: directory
     mode: "0755"
-
+  tags: caddy_config
+  
 - name: Copy docker-compose
   ansible.builtin.copy:
     src: docker-compose.yml
     dest: /opt/caddy/docker-compose.yml
+  tags: caddy_config
 
 - name: Copy Caddyfile
   ansible.builtin.copy:

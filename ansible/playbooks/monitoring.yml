@@ -1,0 +1,5 @@
+# For our monitoring stack
+- hosts: rpi
+  become: true
+  roles:
+    - monitoring

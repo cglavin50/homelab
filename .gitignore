@@ -1,13 +1,7 @@
-logs/
-
-/apps/vw-data/
-
-keys/
-
 .uv/
-venv/
 .venv/
-
 .env
 
 ./ansible/roles/external/
+
+*.crt
