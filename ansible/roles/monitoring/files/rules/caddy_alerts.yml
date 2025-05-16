@@ -1,0 +1,10 @@
+groups:
+  - name: caddy_alerts
+    rules:
+      - alert: High5xxRate
+        expr: increase(caddy_http_response_status{status=~"5.."}[2m]) > 5
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High rate of 500+ errors detected from Caddy"

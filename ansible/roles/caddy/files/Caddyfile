@@ -60,3 +60,9 @@ cadvisor.home {
 	import logging cadvisor
 	reverse_proxy cadvisor:8080
 }
+
+alertmanager.home {
+	tls internal
+	import logging alertmanager
+	reverse_proxy alertmanager:9093
+}

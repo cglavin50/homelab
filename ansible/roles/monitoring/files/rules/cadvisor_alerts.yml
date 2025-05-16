@@ -1,0 +1,27 @@
+groups:
+  - name: cadvisor_alerts
+    rules:
+      - alert: ContainerHighCPU
+        expr: rate(container_cpu_usage_seconds_total{name!=""}[5m]) > 0.8
+        for: 3m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU usage in container {{ $labels.name }}"
+          description: "Container is using more than 80% CPU." 
+
+      - alert: ContainerDown
+        expr: time() - container_last_seen > 60
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Container {{ $labels.name }} is offline"
+
+      - alert: ContainerRestarting
+        expr: increase(container_start_time_seconds[2m]) > 1
+        for: 1m
+        labels:
+          severity: info
+        annotations:
+          summary: "Container {{ $labels.name }} has restarted recently"

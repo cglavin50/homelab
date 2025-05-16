@@ -1,6 +1,14 @@
+MODE ?= remote
+ifeq ($(MODE),local)
+	INVENTORY = localhost
+	CONNECTION = -c local
+else
+	INVENTORY=$(ANSIBLE_DIR)/inventory.yml
+	CONNECTION = 
+endif
+
 ANSIBLE_DIR=ansible
 ANSIBLE_CFG=ansible/ansible.cfg
-INVENTORY=$(ANSIBLE_DIR)/inventory.yml
 MAIN_PLAYBOOK=$(ANSIBLE_DIR)/main.yml
 MONITORING_PLAYBOOK=$(ANSIBLE_DIR)/playbooks/monitoring.yml
 SERVICES_PLAYBOOK=$(ANSIBLE_DIR)/playbooks/docker-services.yml
@@ -13,7 +21,7 @@ export ANSIBLE_CONFIG=$(ANSIBLE_CFG)
 .PHONY: deploy caddy homepage monitoring
 
 deploy:
-	$(ANSIBLE) $(MAIN_PLAYBOOK)
+	$(ANSIBLE) -i $(INVENTORY) $(CONNECTION) $(MAIN_PLAYBOOK)
 
 caddy:
 	$(ANSIBLE) -i $(INVENTORY) $(SERVICES_PLAYBOOK) --tags caddy_config

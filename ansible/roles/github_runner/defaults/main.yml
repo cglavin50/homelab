@@ -1,0 +1,7 @@
+# manual role
+
+runner_user: ansible
+runner_group: ansible
+runner_version: "2.316.1"
+runner_repo: "cglavin50/homelab"
+runner_token: "{{ GITHUB_PAT }}"

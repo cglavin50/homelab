@@ -6,3 +6,6 @@ collections:
 roles:
   - name: geerlingguy.docker
     version: "7.4.7"
+  - name: monolithprojects.github_actions_runner
+    version: 1.21.1
+    src: https://github.com/MonolithProjects/ansible-github_actions_runner

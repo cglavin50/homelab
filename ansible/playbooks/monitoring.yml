@@ -1,5 +1,7 @@
 # For our monitoring stack
 - hosts: rpi
+  vars_files:
+    - ../vault.yml
   become: true
   roles:
     - monitoring

@@ -3,5 +3,6 @@
 .env
 
 ./ansible/roles/external/
+ansible/vault-pass.txt
 
 *.crt

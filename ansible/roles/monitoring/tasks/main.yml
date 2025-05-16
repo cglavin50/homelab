@@ -4,9 +4,15 @@
     state: directory
     mode: '0755'
 
-- name: Configur Prometheus dir
+- name: Configure Prometheus dir
   file:
     path: /opt/monitoring/prometheus
+    state: directory
+    mode: '0755'
+
+- name: Configure rules dir
+  file:
+    path: /opt/monitoring/prometheus/rules
     state: directory
     mode: '0755'
 
@@ -19,6 +25,24 @@
   copy:
     src: prometheus.yml
     dest: /opt/monitoring/prometheus/prometheus.yml
+    mode: '0644'
+
+- name: Copy Prometheus rules
+  copy:
+    src: rules/
+    dest: /opt/monitoring/prometheus/rules/
+    mode: '0644'
+
+- name: Configure Alertmanager dit
+  file:
+    path: /opt/monitoring/alertmanager
+    state: directory
+    mode: '0755'
+
+- name: Configure Alertmanager config
+  template:
+    src: alertmanager.yml.j2
+    dest: /opt/monitoring/alertmanager/alertmanager.yml
     mode: '0644'
 
 - name: Start monitoring stack

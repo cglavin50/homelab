@@ -13,3 +13,15 @@
   become: true
   roles:
     - watchdog
+
+- name: Install GitHub Actions Runner
+  hosts: rpi
+  become: true
+  vars_files:
+    - ../vault.yml
+  vars:
+    github_account: cglavin50
+    github_repo: homelab
+    access_token: "{{ GITHUB_RUNNER_TOKEN }}"
+  roles:
+    - monolithprojects.github_actions_runner
